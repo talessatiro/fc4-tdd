@@ -5,11 +5,11 @@ import { v4 as uuidv4 } from "uuid";
 
 export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
-  async createUser(user: CreateUserDTO): Promise<User> {
-    const userDomain = new User(uuidv4(), user.name);
-    await this.userRepository.save(userDomain);
+  async createUser(dto: CreateUserDTO): Promise<User> {
+    const user = new User(uuidv4(), dto.name);
+    await this.userRepository.save(user);
 
-    return userDomain;
+    return user;
   }
 
   async findUserById(id: string): Promise<User | null> {

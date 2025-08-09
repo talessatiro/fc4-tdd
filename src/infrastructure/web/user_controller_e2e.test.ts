@@ -54,12 +54,12 @@ describe("UserController", () => {
     expect(response.body.user).toHaveProperty("name");
   });
 
-  it("deve retornar erro com código 400 e mensagem 'O nome é obrigatório' ao enviar um nome vazio", async () => {
+  it("deve retornar erro com código 400 e mensagem 'O campo nome é obrigatório' ao enviar um nome vazio", async () => {
     const response = await request(app).post("/users").send({
       name: "",
     });
 
     expect(response.status).toBe(400);
-    expect(response.body.message).toBe("O nome é obrigatório");
+    expect(response.body.message).toBe("O campo nome é obrigatório.");
   });
 });
